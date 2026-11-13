@@ -1,0 +1,17 @@
+[
+ {
+  "check": "V1 independent csv+math re-implementation of the winner's two indicators and trade list (3 ETFs, 2010 to 2026-11)",
+  "pass": true,
+  "detail": "518 trades in the ledger, 518 rebuilt; only in rebuild 0, only in ledger 0"
+ },
+ {
+  "check": "V2 independent scalar option pricing of every winner trade (own expiry rule, brute-force strike scan, erf-based Black-Scholes)",
+  "pass": false,
+  "detail": "518 trades; max abs difference: P&L 3.07e+01 dollars, premium 1.62e+02 dollars"
+ },
+ {
+  "check": "V4 headline statistics recomputed from the saved trades by separate code",
+  "pass": true,
+  "detail": "n 246, mean 17.18% (saved 17.18%), Sharpe 1.034 (saved 1.034), 90% interval 8.3% to 28.6% (saved 8.2% to 28.5%), share of bootstrap means at or below zero 0.0001"
+ }
+]

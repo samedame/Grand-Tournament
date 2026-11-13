@@ -1,0 +1,34 @@
+{
+ "frozen_utc": "2026-11-13T02:17:14Z",
+ "prereg_sha256": "0188e95c9b1b2fffb1a51ef776399f407ad6abd6b1ccc1ac209f11a2fabb8717",
+ "code": {
+  "src/engine.py": "1f054c27b56ddc0eb77c54d84084296ff103fb7f49707dda20a9e420ca9958fa",
+  "src/ind.py": "906e6c31482a0d0f678431131f9c1053c867a396fdf12a2409d5520583f043c8",
+  "src/options.py": "aa2620b98e3c056c46f9b7643fccff34c40b12b3c48dc49d4b674f883cad00b8",
+  "src/prep.py": "b32cf041d684cf410b8be02edc97fc92f157cc333f76ee6e237a0966a879154f",
+  "src/pull.py": "850a9c495532dcde84dd20efbb11fc3b0827e1556d575fc3b7417d7d903ba363",
+  "src/run.py": "d5012078c4a470efd6dea0905a1028ebe1ee766269a46b6a360bb0d017103f4d",
+  "src/stats.py": "924668c3002be8171452c552220700def04c628b2678c9d31ac992e6357dfc65",
+  "src/tests.py": "daf7db53362db92120781bf4d7d42e6ff562f64b5e0e0be3ad817e4931751729"
+ },
+ "data": {
+  "data/raw/DIA.csv": "6867e5d1ca9dd39b664afdce0199b47f426bbb972085c491193e29750155a41f",
+  "data/raw/EEM.csv": "209d172402fc9d83718331d25cf3800c157cdb95a168d9b105fdfd19229f80b3",
+  "data/raw/EFA.csv": "5bc247016b1c5395ca7e838f0a6203d6e8a07c97c1a2006086c74611eec9bc07",
+  "data/raw/GLD.csv": "afa351b28f3d764a8fc376cf1c96102c6f05b11716903fe7f1b4b115dde6267b",
+  "data/raw/IWM.csv": "392d6e7232cc1b8a810d987e0fb3f9b738af9a50172bdf8ed5f69619170e225c",
+  "data/raw/QQQ.csv": "d7e2a2d05f72a46fcaf65581dd8899853e5f6a61b7bc34db1ce27ba52253cf10",
+  "data/raw/RVX_History.csv": "c9aa622fbc81b9408800d0b2208eb39147fd821423cd01c0bd858163174f0a7f",
+  "data/raw/SPY.csv": "04f8ef4807734b9ef56be89b099b8adc752aa5e754a19301bd750b11c3d24242",
+  "data/raw/TLT.csv": "ad8116bf5a2f32a828df03abf5853468c5f0948a6fb64c414e1f6f0eafbc7d85",
+  "data/raw/VIX3M_History.csv": "5c6192a48ce614e8847377653c31cb00bb99a450f0a2348d34d409b05d331700",
+  "data/raw/VIX_History.csv": "325e7d361a452cfeb94152f6d39ee4db28a8c0838357936b329137b61a063fc2",
+  "data/raw/VXD_History.csv": "cc7b8dbf0a2245dfec065066a17c6e65f70aa0e0c5afa0507e5b4e64df0a7de0",
+  "data/raw/VXN_History.csv": "1075f36a0946542b2867b37806937e57f20bb0d8cd0f16c4d04b17f127eeac9e",
+  "data/raw/^IRX.csv": "51db3afdfe3bf045129c55366cbf9aa99a9ab1d8fa615604d92fb2fe2cf782e6",
+  "data/raw/^VIX.csv": "b0e9f44759b9488fe4da2251fffcec076c0d52bf13245de28c6d800ea853c0fa",
+  "data/raw/^VIX3M.csv": "6a96a69bd4bd8ec68518d50dea42a8a7227cb8af274d93f2f2f2ef343a550263",
+  "data/raw/^VXN.csv": "69f8625debd0cc7a7200aa1a13e57c7cb1b081669b1bf80ae9f98be9bbec8ffd"
+ },
+ "counts_log": "cd4993f6791a75e4e4d2ae0f1e5b84c9deaef4ac7c0d056ab5abe3f4f16becc9"
+}
