@@ -25,10 +25,11 @@ jobs:
       - name: Signal check
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          TRADIER_TOKEN: ${{ secrets.TRADIER_TOKEN }}
+          TRADIER_ENV: ${{ vars.TRADIER_ENV || 'production' }}
         run: python src/signal_check.py "${{ inputs.mode || 'alert' }}"
       - name: Commit ledger
-        if: ${{ inputs.mode == 'confirm' }}
         run: |
           git config user.name "grand-tournament-bot"; git config user.email "noreply@users.noreply.github.com"
-          git add ledger/signals.csv || true
+          git add ledger/ || true
           git diff --cached --quiet || (git commit -m "signal ledger $(date -u +%F) [skip ci]" && git pull --rebase -q && git push)

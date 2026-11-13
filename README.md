@@ -55,6 +55,10 @@ The full scan writes about 260 MB to `results/blocks/` (git-ignored). `src/pull.
 
 `data/raw/` holds Yahoo Finance and Cboe downloads for reproducibility. Check those providers' terms before redistributing, and delete the folder from a public fork if unsure.
 
+## Shadow test (real quotes)
+
+`.github/workflows/signal-check.yml` is dispatched by a Cloudflare Worker at 15:50 ET (alert) and 16:25 ET (confirm). With a `TRADIER_TOKEN` repo secret, `src/quotes.py` logs the real bid/ask/IV of the ~0.30 and ~0.80-delta calls on signal days (first Friday expiry >= 14 days out) and re-quotes them at the next close, into `ledger/quotes.csv`. About 1 in 10 no-signal days it also logs a SPY 0.30-delta baseline. Read-only: no order endpoints. `TRADIER_ENV=sandbox` (repo variable) gives delayed data, fine for plumbing tests only. Tests: `python src/test_quotes.py`.
+
 ## Next step
 
 Shadow-forward-test on SPY and QQQ: log the real ask at the close on signal days and the real bid at the next close (0.30 and 0.80 delta). Or buy historical end-of-day option chains for the ~340 past signal dates.

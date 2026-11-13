@@ -9,7 +9,7 @@ import csv, json, os, sys, time, urllib.parse, urllib.request
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import numpy as np
-import ind
+import ind, quotes
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(ROOT, "ledger", "signals.csv")
@@ -54,6 +54,8 @@ def main(mode):
         rows.append([d.isoformat(), t, f"{px:.2f}", f"{r:.1f}", f"{dem:.3f}", int(on), mode])
         lines.append(f"{t} {px:.2f}  RSI14 {r:.1f}  DeMarker {dem:.2f}  -> {'SIGNAL ON' if on else 'off'}")
     any_on = any(x[5] for x in rows)
+    qstat = quotes.run(mode, today, [x[1] for x in rows if x[5]], bool(rows))
+    print(qstat)
     if mode == "alert" and not any_on and rows:
         print("\n".join(lines)); return  # quiet on no-signal days
     tag = "SIGNAL" if any_on else "no signal"
@@ -62,6 +64,8 @@ def main(mode):
     if any_on and mode == "alert":
         note += ("\nRule: buy one ~0.30-delta call, first weekly expiry >= 14 days out, at the close; sell at next close. "
                  "Log the real ask now and the real bid tomorrow (shadow test).")
+    if "FAILED" in qstat:
+        note += "\n" + qstat
     print(note)
     hook = os.environ.get("DISCORD_WEBHOOK_URL")
     if hook:
@@ -69,6 +73,7 @@ def main(mode):
         try: urllib.request.urlopen(req, timeout=30)
         except Exception as e: print("discord post failed:", e)
     if mode == "confirm" and rows:
+        os.makedirs(os.path.dirname(LEDGER), exist_ok=True)
         new = not os.path.exists(LEDGER)
         with open(LEDGER, "a", newline="") as f:
             w = csv.writer(f)
