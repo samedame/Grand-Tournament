@@ -5,7 +5,7 @@ nearest 0.80 delta in the first Friday expiry >= 14 calendar days out. On roughl
 0.30-delta baseline for SPY so model-vs-real pricing can be compared without waiting for signals.
 Exit (confirm run, ~16:25 ET): re-quote every contract that has an entry row and no exit row, dated before today.
 
-Env: TRADIER_TOKEN (required, else this module does nothing), TRADIER_ENV = production (default) | sandbox.
+Env: TRADIER_TOKEN (required, else this module does nothing), FORCE_BASELINE=1 (log a baseline today, for testing), TRADIER_ENV = production (default) | sandbox.
 Sandbox data is delayed ~15 min: fine for plumbing tests, NOT a valid fill-quality measurement.
 Ledger: ledger/quotes.csv
 """
@@ -148,7 +148,7 @@ def run(mode, today, signal_tickers, no_signal_any):
         if mode == "alert":
             for t in signal_tickers:
                 rows += log_entries(today, t, "signal")
-            if not signal_tickers and no_signal_any and is_baseline_day(today):
+            if os.environ.get("FORCE_BASELINE") == "1" or (not signal_tickers and no_signal_any and is_baseline_day(today)):
                 rows += log_entries(today, BASELINE_TICKER, "baseline")
         else:
             rows += log_exits(today, read_ledger())
